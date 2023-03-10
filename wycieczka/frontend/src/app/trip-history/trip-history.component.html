@@ -1,0 +1,27 @@
+<div class="trips">
+  <div *ngFor="let item of history" class="trip">
+    <div class="trip__name">
+      {{ item.trip.name }}
+    </div>
+    <div class="trip__date">
+      {{ item.trip.start | date : "dd/MM/yyyy" }}
+    </div>
+    <div class="trip__date">
+      {{ item.trip.end | date : "dd/MM/yyyy" }}
+    </div>
+
+    <div class="trip__cost">
+      {{ item.trip.unitPrice | currency : "USD" : "symbol" : "1.2-2" }}
+    </div>
+
+    <div class="trip__status">
+      <span class="trip__status--{{ item.tripStatus }}">
+        {{ item.tripStatus }}
+      </span>
+    </div>
+  </div>
+
+  <div *ngIf="history.length === 0" class="no_trips">
+    <p>No trips found</p>
+  </div>
+</div>

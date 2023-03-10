@@ -1,0 +1,50 @@
+<div
+  *ngIf="trip"
+  class="trip"
+  [ngClass]="{
+    highest: highestPrice === trip.unitPrice,
+    lowest: lowestPrice === trip.unitPrice
+  }"
+  routerLink="/app-trips-page/{{ trip.id }}"
+>
+  <h2>{{ trip.name | uppercase }}</h2>
+  <h4>{{ trip.country | uppercase }}</h4>
+  <h4>Start: {{ trip.start }}</h4>
+  <h4>End: {{ trip.end }}</h4>
+  <h5>Price: {{ trip.unitPrice | currency }}</h5>
+  <div class="button-container">
+    <button
+      class="reserve-btn"
+      (click)="reserve($event)"
+      [ngClass]="{
+        disablebtn: trip.limit - trip.taken - reserved === 0
+      }"
+    >
+      <span>&#10003;</span>
+    </button>
+    <button
+      class="cancel-btn"
+      (click)="cancel($event)"
+      [ngClass]="{
+        disablebtn: reserved === 0
+      }"
+    >
+      <span>&#10007;</span>
+    </button>
+  </div>
+  <p>taken: {{ reserved }}</p>
+  <p
+    class="left"
+    [ngClass]="{
+      little:
+        trip.limit - trip.taken - reserved <= 3 &&
+        trip.limit - trip.taken - reserved !== 0,
+      zero: trip.limit - trip.taken - reserved === 0
+    }"
+  >
+    left: {{ trip.limit - trip.taken - reserved }}
+  </p>
+  <!-- <ngb-rating onchange="rate(currentRate)" [(rate)]="trip.rating"></ngb-rating> -->
+  <!-- <p *ngIf="trip.rating">Current rate: {{ trip.rating }}</p> -->
+  <button class="remove-btn" (click)="removeCard?.($event)">remove</button>
+</div>

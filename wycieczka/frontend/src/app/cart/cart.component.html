@@ -1,0 +1,13 @@
+<div class="trips-container">
+  <li *ngFor="let item of items">
+    <h2>{{ item.trip.name }}</h2>
+    <h5>
+      {{ item.quantity }} * {{ item.trip.unitPrice | currency }} =
+      <b>{{ item.quantity * item.trip.unitPrice | currency }}</b>
+    </h5>
+    <h5>{{ item.trip.start }} - {{ item.trip.end }}</h5>
+    <button class="removeButton" (click)="remove(item)">remove</button>
+    <button class="buyButton" (click)="buy(item)">buy</button>
+  </li>
+</div>
+<div class="suma">suma: {{ getSum() | currency }}</div>

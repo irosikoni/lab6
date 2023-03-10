@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  userName       String       @unique
+  userRoles      Role[]       @default([USER])
+  email          String       @unique
+  isBanned       Boolean      @default(false)
+  hashedPassword String
+  review         Review[]
+  trips          UserOnTrip[]
+}
+
+model UserOnTrip {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  user    User   @relation(fields: [user_id], references: [id])
+  trip    Trip   @relation(fields: [trip_id], references: [id])
+  user_id String @db.ObjectId
+  trip_id String @db.ObjectId
+}
+
+model Review {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  user    User   @relation(fields: [user_id], references: [id])
+  trip    Trip   @relation(fields: [trip_id], references: [id])
+  user_id String @db.ObjectId
+  trip_id String @db.ObjectId
+  rating  Int?
+  comment String
+}
+
+model Persistance {
+  id   String          @id @default(auto()) @map("_id") @db.ObjectId
+  type PersistanceType @default(SESSION)
+}
+
+model Trip {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  country     String
+  start       String
+  end         String
+  unitPrice   Float
+  limit       Int
+  taken       Int
+  description String
+  photo       String
+  photo2      String?
+  photo3      String?
+  reviews     Review[]
+  users       UserOnTrip[]
+}
+
+enum Role {
+  USER
+  MANAGER
+  ADMIN
+}
+
+enum PersistanceType {
+  LOCAL
+  SESSION
+  NONE
+}

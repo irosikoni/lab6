@@ -1,0 +1,35 @@
+<section id="form-section">
+  <div class="header"><h1>LOG IN</h1></div>
+  <form class="logForm" id="form">
+    <div class="ulogin">
+      <label for="login">Login</label>
+      <input [formControl]="userName" type="login" id="login" name="login" />
+    </div>
+    <div class="rpasspart">
+      <label for="password">Password</label>
+      <input
+        [formControl]="password"
+        type="password"
+        id="password"
+        name="password"
+      />
+      <i
+        class="fa fa-eye"
+        id="show2"
+        style="color: grey"
+        aria-hidden="true"
+      ></i>
+      <p class="error-msg">er</p>
+    </div>
+    <input
+      (click)="onSubmit($event)"
+      class="submitBtn"
+      type="submit"
+      value="Submit"
+    />
+  </form>
+  <div class="forgot"><h6>Forgot your password?</h6></div>
+  <div class="newAccount">
+    <h6 routerLink="app-sign-form">Don't have account yet?</h6>
+  </div>
+</section>

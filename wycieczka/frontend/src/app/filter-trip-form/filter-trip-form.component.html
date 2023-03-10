@@ -1,0 +1,87 @@
+<div class="filter-container">
+  <form *ngIf="ui">
+    <label
+      >Min:{{ currentRange.min | currency }}
+      <input
+        type="range"
+        min="{{ ui.min }}"
+        max="{{ ui.max }}"
+        numeric
+        value="{{ currentRange.min }}"
+        (change)="updateMin?.($event)"
+      />
+    </label>
+    <hr />
+    <label
+      >Max: {{ currentRange.max | currency }}
+      <input
+        type="range"
+        min="{{ ui.min }}"
+        max="{{ ui.max }}"
+        numeric
+        value="{{ currentRange.max }}"
+        (change)="updateMax?.($event)"
+      />
+    </label>
+    <hr />
+  </form>
+  <form [formGroup]="filterForm">
+    <div class="input-part">
+      <span
+        *ngIf="
+          filterForm.controls['start'].invalid &&
+          filterForm.controls['start'].touched
+        "
+        class="error"
+        >{{filterForm.controls["start"].errors?.['required'] ? "Value is required" : "Invalid Value"}}</span
+      >
+      <label for="start">Beggining: </label>
+      <input
+        class="input-place"
+        id="start"
+        type="date"
+        formControlName="start"
+        required
+        (change)="updateMinDate?.($event)"
+      />
+      <hr />
+    </div>
+    <div class="input-part">
+      <span
+        *ngIf="
+          filterForm.controls['end'].invalid &&
+          filterForm.controls['end'].touched
+        "
+        class="error"
+        >{{filterForm.controls["end"].errors?.['required'] ? "Value is required" : "Invalid Value"}}</span
+      >
+      <label for="end">End: </label>
+      <input
+        class="input-place"
+        id="end"
+        type="date"
+        formControlName="end"
+        required
+        (change)="updateMaxDate?.($event)"
+      />
+      <hr />
+    </div>
+  </form>
+
+  <form>
+    <div class="rating-container" [formGroup]="ratingFilterForm">
+      <label>Rating: </label>
+      <div *ngFor="let choice of checks; let i = index">
+        <input
+          class="rating-box"
+          type="checkbox"
+          [value]="choice.value"
+          (change)="onCheckChange($event)"
+          [checked]="choice.value"
+          id="{{ i }}"
+        />
+        {{ choice.description }}
+      </div>
+    </div>
+  </form>
+</div>

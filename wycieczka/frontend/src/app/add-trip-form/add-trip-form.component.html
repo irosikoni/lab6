@@ -1,0 +1,108 @@
+<form [formGroup]="modelForm" (ngSubmit)="onSubmit()" class="add-form">
+  <div class="input-part">
+    <span
+      *ngIf="
+        modelForm.controls['name'].invalid && modelForm.controls['name'].touched
+      "
+      class="error"
+      >{{modelForm.controls["start"].errors?.['required'] ? "Value is required" : "Invalid Value"}}</span
+    >
+    <label for="name">Name: </label>
+    <input id="name" type="text" formControlName="name" required />
+  </div>
+  <div class="input-part">
+    <span
+      *ngIf="
+        modelForm.controls['country'].invalid &&
+        modelForm.controls['country'].touched
+      "
+      class="error"
+      >{{modelForm.controls["country"].errors?.['required'] ? "Value is required" : "Invalid Value"}}</span
+    >
+    <label for="country">Country: </label>
+    <input id="country" type="text" formControlName="country" required />
+  </div>
+  <div class="input-part">
+    <span
+      *ngIf="
+        modelForm.controls['start'].invalid &&
+        modelForm.controls['start'].touched
+      "
+      class="error"
+      >{{modelForm.controls["start"].errors?.['required'] ? "Value is required" : "Invalid Value"}}</span
+    >
+    <label for="start">Beggining: </label>
+    <input id="start" type="date" formControlName="start" required />
+  </div>
+  <div class="input-part">
+    <span
+      *ngIf="
+        modelForm.controls['end'].invalid && modelForm.controls['end'].touched
+      "
+      class="error"
+      >{{modelForm.controls["end"].errors?.['required'] ? "Value is required" : "Invalid Value"}}</span
+    >
+    <label for="end">End: </label>
+    <input id="end" type="date" formControlName="end" required />
+  </div>
+  <div class="input-part">
+    <span
+      *ngIf="
+        modelForm.controls['unitPrice'].invalid &&
+        modelForm.controls['unitPrice'].touched
+      "
+      class="error"
+      >{{modelForm.controls["unitPrice"].errors?.['required'] ? "Value is required" : "Invalid Value"}}</span
+    >
+    <label for="unitPrice">Price for person: </label>
+    <input
+      id="unitPrice"
+      type="number"
+      min="0"
+      formControlName="unitPrice"
+      required
+    />
+  </div>
+  <div class="input-part">
+    <span
+      *ngIf="
+        modelForm.controls['limit'].invalid &&
+        modelForm.controls['limit'].touched
+      "
+      class="error"
+      >Invalid Value</span
+    >
+    <label for="limit">Places available: </label>
+    <input id="limit" type="number" min="0" formControlName="limit" required />
+  </div>
+  <div class="input-part">
+    <span
+      *ngIf="
+        modelForm.controls['description'].invalid &&
+        modelForm.controls['description'].touched
+      "
+      class="error"
+      >Invalid Value</span
+    >
+    <label for="description">Trip description: </label>
+    <input
+      id="description"
+      type="text"
+      formControlName="description"
+      required
+    />
+  </div>
+  <div class="input-part">
+    <span
+      *ngIf="
+        modelForm.controls['photo'].invalid &&
+        modelForm.controls['photo'].touched
+      "
+      class="error"
+      >Invalid Value</span
+    >
+    <label for="photo">Photo url: </label>
+    <input id="photo" type="text" formControlName="photo" required />
+  </div>
+  <button class="add-form-btn" type="submit">Send</button>
+</form>

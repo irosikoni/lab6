@@ -1,0 +1,107 @@
+<section id="form-section">
+  <form class="form" id="form">
+    <div class="ulogin">
+      <label for="login">Login</label>
+      <input [formControl]="userName" type="login" id="login" name="login" />
+    </div>
+    <div class="uemail">
+      <label for="email">Email</label>
+      <input [formControl]="email" type="email" id="email" name="email" />
+    </div>
+    <div class="npasspart">
+      <label for="newpass">New password</label>
+      <input
+        [formControl]="password"
+        type="password"
+        id="newpass"
+        name="newpass"
+      />
+      <i
+        class="fa fa-eye"
+        id="show1"
+        style="color: grey"
+        aria-hidden="true"
+      ></i>
+    </div>
+    <div class="rpasspart">
+      <label for="repeatpass">Repeat new password</label>
+      <input
+        [formControl]="rpassword"
+        type="password"
+        id="repeatpass"
+        name="repeatpass"
+      />
+      <i
+        class="fa fa-eye"
+        id="show2"
+        style="color: grey"
+        aria-hidden="true"
+      ></i>
+      <p class="error-msg">er</p>
+    </div>
+    <div class="requirements">
+      <label>Passport requirements</label>
+      <p class="length">
+        <span class="fa-stack" id="check1">
+          <i
+            class="fa fa-exclamation-circle"
+            style="color: lightgrey"
+            aria-hidden="true"
+          ></i>
+          <i
+            class="fa fa-check-circle"
+            style="color: greenyellow"
+            aria-hidden="true"
+          ></i>
+        </span>
+        at least 8 characters
+      </p>
+      <p class="special">
+        <span class="fa-stack" id="check2">
+          <i
+            class="fa fa-check-circle"
+            style="color: greenyellow"
+            aria-hidden="true"
+          ></i>
+          <i
+            class="fa fa-exclamation-circle"
+            style="color: lightgrey"
+            aria-hidden="true"
+          ></i>
+        </span>
+        at least one special character
+      </p>
+      <p class="capital">
+        <span class="fa-stack" id="check3">
+          <i
+            class="fa fa-check-circle"
+            style="color: greenyellow"
+            aria-hidden="true"
+          ></i>
+          <i
+            class="fa fa-exclamation-circle"
+            style="color: lightgrey"
+            aria-hidden="true"
+          ></i>
+        </span>
+        at least one capital letter
+      </p>
+      <p class="digit">
+        <span class="fa-stack" id="check4">
+          <i
+            class="fa fa-check-circle"
+            style="color: greenyellow"
+            aria-hidden="true"
+          ></i>
+          <i
+            class="fa fa-exclamation-circle"
+            style="color: lightgrey"
+            aria-hidden="true"
+          ></i>
+        </span>
+        at least one digit
+      </p>
+    </div>
+    <input class="submitBtn" type="submit" value="Submit" />
+  </form>
+</section>

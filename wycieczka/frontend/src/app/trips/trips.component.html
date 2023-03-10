@@ -1,0 +1,9 @@
+<div class="list">
+  <app-trip-card
+    *ngFor="let trip of tripList"
+    [lowestPrice]="minTripPrice"
+    [trip]="trip"
+    [highestPrice]="maxTripPrice"
+  >
+  </app-trip-card>
+</div>

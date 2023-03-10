@@ -1,0 +1,37 @@
+<nav>
+  <p class="logo"><b>WAVE</b>SS</p>
+  <button routerLink="" routerLinkActive="active" class="homeBtn">Home</button>
+  <button
+    class="catalogueBtn"
+    routerLink="app-trips-page"
+    routerLinkActive="active"
+  >
+    Catalogue
+  </button>
+  <button
+    class="addBtn"
+    routerLink="app-add-trip-form"
+    routerLinkActive="active"
+  >
+    Add
+  </button>
+  <button class="cartBtn" routerLink="app-cart" routerLinkActive="active">
+    Cart
+  </button>
+  <button
+    routerLink="app-trip-history"
+    routerLinkActive="active"
+    class="historyBtn"
+  >
+    History
+  </button>
+  <button
+    *ngIf="!isLog"
+    routerLink="app-log-form"
+    routerLinkActive="active"
+    class="logBtn"
+  >
+    Log In/Sign Up
+  </button>
+  <button *ngIf="isLog" class="logBtn" #elseBlock>Log Out</button>
+</nav>

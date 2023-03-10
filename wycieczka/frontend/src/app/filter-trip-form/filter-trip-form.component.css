@@ -1,0 +1,28 @@
+.filter-container {
+  margin: 20px;
+  padding: 10px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: lightslategray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rating-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.rating-box {
+  padding: 5px;
+  width: 15px;
+  height: 15px;
+  font-size: larger;
+  background-color: aliceblue;
+}
+
+.input-place {
+  width: 100%;
+  color: lightslategray;
+}
